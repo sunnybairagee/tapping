@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
       - name: Generate images.json
         run: |
           mkdir -p data
@@ -22,5 +25,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add data/images.json
-          git commit -m "Auto update images.json"
+          git commit -m "Auto update images.json" || echo "No changes"
           git push
