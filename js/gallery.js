@@ -1,6 +1,7 @@
 fetch("data/images.json")
   .then(res => res.json())
   .then(images => {
+    images.reverse();
     document.getElementById("count").innerText = `Total Photos: ${images.length}`;
 
     const gallery = document.getElementById("gallery");
