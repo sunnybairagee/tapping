@@ -15,10 +15,14 @@ jobs:
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: Generate images.json
+      - name: Generate images.json safely
         run: |
           mkdir -p data
-          ls images | jq -R . | jq -s . > data/images.json
+          if [ "$(ls -A images)" ]; then
+            ls images | jq -R . | jq -s . > data/images.json
+          else
+            echo "[]" > data/images.json
+          fi
 
       - name: Commit changes
         run: |
