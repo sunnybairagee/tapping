@@ -1,1 +1,26 @@
+name: Generate images.json
 
+on:
+  push:
+    paths:
+      - "images/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Generate images.json
+        run: |
+          mkdir -p data
+          ls images | jq -R . | jq -s . > data/images.json
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add data/images.json
+          git commit -m "Auto update images.json"
+          git push
