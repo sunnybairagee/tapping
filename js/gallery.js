@@ -1,33 +1,88 @@
+const gallery = document.getElementById("gallery");
+const loadMoreBtn = document.getElementById("loadMoreBtn");
+
 const popover = document.getElementById("imgPopover");
 const popoverImg = document.getElementById("popoverImg");
 const popoverDownload = document.getElementById("popoverDownload");
 
+let allImages = [];
+let currentIndex = 0;
+const BATCH_SIZE = 10;
+
 fetch("data/images.json")
   .then(res => res.json())
   .then(images => {
-    images.reverse(); // latest first
-
-    const gallery = document.getElementById("gallery");
-    document.getElementById("count").innerText = `Total Photos: ${images.length}`;
-
-    images.forEach(img => {
-      const div = document.createElement("div");
-      div.className = "gallery-item";
-
-      const image = document.createElement("img");
-      image.src = `images/${img}`;
-      image.loading = "lazy";
-
-      image.onclick = () => {
-        popoverImg.src = `images/${img}`;
-        popoverDownload.href = `images/${img}`;
-        popover.showPopover(); // ⭐ native API
-      };
-
-      div.appendChild(image);
-      gallery.appendChild(div);
-    });
+    allImages = images.reverse(); // latest first
+    document.getElementById("count").innerText = `Total Photos: ${allImages.length}`;
+    loadNextBatch();
   });
+
+function loadNextBatch() {
+  const nextImages = allImages.slice(
+    currentIndex,
+    currentIndex + BATCH_SIZE
+  );
+
+  nextImages.forEach(img => {
+    const div = document.createElement("div");
+    div.className = "gallery-item";
+
+    const image = document.createElement("img");
+    image.src = `images/${img}`;
+    image.loading = "lazy";
+
+    image.onclick = () => {
+      popoverImg.src = `images/${img}`;
+      popoverDownload.href = `images/${img}`;
+      popover.showPopover(); // native popover
+    };
+
+    div.appendChild(image);
+    gallery.appendChild(div);
+  });
+
+  currentIndex += BATCH_SIZE;
+
+  // अगर images खत्म हो गईं
+  if (currentIndex >= allImages.length) {
+    loadMoreBtn.style.display = "none";
+  }
+}
+
+loadMoreBtn.addEventListener("click", loadNextBatch);
+
+
+
+// const popover = document.getElementById("imgPopover");
+// const popoverImg = document.getElementById("popoverImg");
+// const popoverDownload = document.getElementById("popoverDownload");
+
+// fetch("data/images.json")
+//   .then(res => res.json())
+//   .then(images => {
+//     images.reverse(); // latest first
+
+//     const gallery = document.getElementById("gallery");
+//     document.getElementById("count").innerText = `Total Photos: ${images.length}`;
+
+//     images.forEach(img => {
+//       const div = document.createElement("div");
+//       div.className = "gallery-item";
+
+//       const image = document.createElement("img");
+//       image.src = `images/${img}`;
+//       image.loading = "lazy";
+
+//       image.onclick = () => {
+//         popoverImg.src = `images/${img}`;
+//         popoverDownload.href = `images/${img}`;
+//         popover.showPopover(); // ⭐ native API
+//       };
+
+//       div.appendChild(image);
+//       gallery.appendChild(div);
+//     });
+//   });
 
 
 // fetch("data/images.json")
