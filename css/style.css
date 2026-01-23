@@ -1,14 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
 body {
   margin: 0;
   padding: 10px;
   font-family: system-ui, Arial, sans-serif;
-  background: #0f0f0f;
-  color: #fff;
+  /* background: #0f0f0f; */
+  /* color: #fff; */
 }
-
-h2 {
-  text-align: center;
-  margin-bottom: 10px;
+a, svg, button, div, image, img, link{
+    -webkit-tap-highlight-color: transparent;
+}
+header{
+    position: sticky;
+    top: 0;
+    height: 45px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    z-index: 9;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+.logo{
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+}
+.gallery_count{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+.gallery_text{
+    font-size: 20px;
+    padding: 0 5px;
 }
 /* Gallery section  */
 .gallery {
