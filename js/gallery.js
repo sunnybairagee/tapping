@@ -13,7 +13,7 @@ fetch("data/images.json")
   .then(res => res.json())
   .then(images => {
     allImages = images.reverse(); // latest first
-    document.getElementById("count").innerText = `Total Photos: ${allImages.length}`;
+    document.getElementById("count").innerText = `${allImages.length}`;
     loadNextBatch();
   });
 
