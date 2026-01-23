@@ -3,13 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     user-select: none;
-}
-body {
-  margin: 0;
-  padding: 10px;
-  font-family: system-ui, Arial, sans-serif;
-  /* background: #0f0f0f; */
-  /* color: #fff; */
+    font-family: Arial, Helvetica, sans-serif;
 }
 a, svg, button, div, image, img, link{
     -webkit-tap-highlight-color: transparent;
@@ -22,6 +16,7 @@ header{
     display: flex;
     align-items: center;
     background: #fff;
+    margin-bottom: 10px;
     z-index: 9;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
