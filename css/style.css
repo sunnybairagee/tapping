@@ -73,7 +73,7 @@ h2 {
     height: 140px;
   }
 } */
-.lightbox {
+/* .lightbox {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.9);
@@ -103,4 +103,43 @@ h2 {
   margin-top: 15px;
   color: #0af;
   font-size: 18px;
+} */
+.popover {
+  background: rgba(0,0,0,0.92);
+  border: none;
+  border-radius: 14px;
+  padding: 10px;
+  max-width: 95vw;
+  max-height: 90vh;
+}
+
+.popover::backdrop {
+  background: rgba(0,0,0,0.6);
+}
+
+.popover img {
+  max-width: 90vw;
+  max-height: 70vh;
+  border-radius: 12px;
+  display: block;
+  margin: auto;
+}
+
+.popover a {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  color: #0af;
+  font-size: 18px;
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
 }
