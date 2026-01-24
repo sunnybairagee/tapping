@@ -71,8 +71,10 @@ header{
 }
 /* POPOVER  */
 .my_popover{
-    width: 100vw;
-    height: 100dvh;
+    max-width: 95vw;
+    max-height: 90vh;
+    /* width: 100vw; */
+    /* height: 100dvh; */
     border: none;
     background-color: #fff;
 }
@@ -114,10 +116,10 @@ header{
 } */
 
 .popover img {
-  width: 100%;
-  hieght: auto;
-  /* max-width: 90vw; */
-  /* max-height: 70vh; */
+  /* width: 100%; */
+  /* hieght: auto; */
+  max-width: 90vw;
+  max-height: 70vh;
   border-radius: 12px;
   display: block;
   margin: auto;
