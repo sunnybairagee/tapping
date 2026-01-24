@@ -124,7 +124,9 @@ header{
   display: block;
   margin: auto;
 }
-
+.blank{
+    height: 50px;
+}
 /* .popover a {
   display: block;
   margin-top: 10px;
