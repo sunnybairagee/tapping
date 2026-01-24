@@ -43,6 +43,7 @@ header{
   /* row-gap: 10px; */
   /* column-gap: 10px; */
   gap: 10px;
+  margin-bottom: 10px;
   /* column-count: 3; */
   /* column-gap: 10px; */
 }
@@ -188,7 +189,7 @@ header{
 /* LOADMORE  */
 .load_more_box{
     text-align: center;
-    margin: 0 10px;
+    margin: 0 10px 10px 10px;
     background-color: none;
     border: 1px solid black;
 }
