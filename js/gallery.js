@@ -7,7 +7,7 @@ const popoverDownload = document.getElementById("popoverDownload");
 
 let allImages = [];
 let currentIndex = 0;
-const BATCH_SIZE = 4;
+const BATCH_SIZE = 6;
 
 fetch("data/images.json")
   .then(res => res.json())
