@@ -71,10 +71,10 @@ header{
 }
 /* POPOVER  */
 .my_popover{
-    max-width: 95vw;
-    max-height: 90vh;
-    /* width: 100vw; */
-    /* height: 100dvh; */
+    /* max-width: 95vw; */
+    /* max-height: 90vh; */
+    width: 100vw;
+    height: 100dvh;
     border: none;
     background-color: #fff;
 }
