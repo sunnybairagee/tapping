@@ -114,8 +114,10 @@ header{
 } */
 
 .popover img {
-  max-width: 90vw;
-  max-height: 70vh;
+  width: 100%;
+  hieght: auto;
+  /* max-width: 90vw; */
+  /* max-height: 70vh; */
   border-radius: 12px;
   display: block;
   margin: auto;
