@@ -61,7 +61,7 @@ header{
 
 .gallery-item img {
   width: 100%;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   cursor: pointer;
   transition: transform 0.2s ease;
 }
@@ -116,11 +116,11 @@ header{
 } */
 
 .my_popover img {
-  /* width: 100%; */
-  /* hieght: auto; */
-  max-width: 90vw;
-  max-height: 70vh;
-  border-radius: 12px;
+  width: 100%;
+  hieght: auto;
+  /* max-width: 90vw; */
+  /* max-height: 70vh; */
+  /* border-radius: 12px; */
   display: block;
   margin: auto;
 }
