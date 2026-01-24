@@ -95,11 +95,15 @@ header{
     height: 90%;
     border: 1px solid rgb(220, 220, 220);
 }
+.popover_bottom a{
+    text-decoration: none;
+    color: black;
+}
 .popover_bottom .link_box{
     display: flex;
     justify-content: center;
 }
-.popover_bottom button,a{
+.popover_bottom button{
     border: none;
     background: none;
     font-size: 18px;
