@@ -38,11 +38,14 @@ header{
 /* Gallery section  */
 .gallery {
   padding: 0 10px;
-  column-count: 3;
-  column-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  /* column-count: 3; */
+  /* column-gap: 10px; */
 }
 
-@media (min-width: 600px) {
+/* @media (min-width: 600px) {
   .gallery {
     column-count: 3;
   }
@@ -52,7 +55,7 @@ header{
   .gallery {
     column-count: 4;
   }
-}
+} */
 
 .gallery-item {
   break-inside: avoid;
