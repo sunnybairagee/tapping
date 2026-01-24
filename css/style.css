@@ -98,6 +98,7 @@ header{
 .popover_bottom a{
     text-decoration: none;
     color: black;
+    font-weight: bold;
 }
 .popover_bottom .link_box{
     display: flex;
