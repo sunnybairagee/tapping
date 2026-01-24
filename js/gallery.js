@@ -36,7 +36,7 @@ function loadNextBatch() {
     image.loading = "lazy";
 
     /* Jab image load ho jaaye */
-    img.onload = () => {
+    image.onload = () => {
       skeleton.remove();
     };
 
