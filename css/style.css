@@ -38,7 +38,7 @@ header{
 /* Gallery section  */
 .gallery {
   padding: 0 10px;
-  column-count: 2;
+  column-count: 3;
   column-gap: 10px;
 }
 
@@ -56,7 +56,7 @@ header{
 
 .gallery-item {
   break-inside: avoid;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .gallery-item img {
