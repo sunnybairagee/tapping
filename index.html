@@ -18,17 +18,28 @@
   <div class="gallery" id="gallery"></div>
 
 <!-- Native Popover -->
-  <div id="imgPopover" popover class="popover">
+  <div class="my_popover" id="imgPopover" popover>
+        <img id="popoverImg">
+        <div class="popover_bottom">
+            <button popovertarget="imgPopover" popovertargetaction="hide">Back</button>
+            <div class="line"></div>
+            <button id="popoverDownload">Download</button>
+        </div>
+  </div>
+
+  
+  <!-- <div id="imgPopover" popover class="popover">
     <button popovertarget="imgPopover" popovertargetaction="hide" class="close">✕</button>
     <img id="popoverImg">
     <a id="popoverDownload" download>⬇ Download</a>
-  </div>
+  </div> -->
 
   <button id="loadMoreBtn" class="load-more">Load More</button>
 
 <script src="./js/gallery.js"></script>
 </body>
 </html>
+
 
 
 
