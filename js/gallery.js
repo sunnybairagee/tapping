@@ -27,9 +27,18 @@ function loadNextBatch() {
     const div = document.createElement("div");
     div.className = "gallery-item";
 
+    /* Skeleton */
+    const skeleton = document.createElement("div");
+    skeleton.className = "skeleton";
+
     const image = document.createElement("img");
     image.src = `images/${img}`;
     image.loading = "lazy";
+
+    /* Jab image load ho jaaye */
+    img.onload = () => {
+      skeleton.remove();
+    };
 
     image.onclick = () => {
       popoverImg.src = `images/${img}`;
@@ -37,6 +46,7 @@ function loadNextBatch() {
       popover.showPopover(); // native popover
     };
 
+    div.appendChild(skeleton);
     div.appendChild(image);
     gallery.appendChild(div);
   });
