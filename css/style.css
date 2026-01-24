@@ -30,10 +30,10 @@ header{
     display: flex;
     align-items: center;
     margin-left: auto;
+    gap: 5px;
 }
 .gallery_text{
     font-size: 20px;
-    padding: 0 5px;
 }
 /* Gallery section  */
 .gallery {
