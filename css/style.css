@@ -59,12 +59,17 @@ header{
   }
 } */
 
-.gallery-item {
+/* .gallery-item {
   break-inside: avoid;
-  /* margin-bottom: 10px; */
+} */
+.gallery-item {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
 .gallery-item img {
+  display: block;
   width: 100%;
   /* border-radius: 12px; */
   cursor: pointer;
@@ -73,6 +78,26 @@ header{
 
 .gallery-item img:active {
   transform: scale(1.02);
+}
+/* IMAGE LOADER  */
+/* Skeleton loader */
+.skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #e0e0e0 25%,
+    #f5f5f5 37%,
+    #e0e0e0 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+/* Animation */
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
 }
 /* POPOVER  */
 .my_popover{
