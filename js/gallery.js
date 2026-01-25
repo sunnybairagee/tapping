@@ -16,7 +16,8 @@ fetch("data/images.json")
     document.getElementById("count").innerText = `${allImages.length}`;
     loadNextBatch();
     if (allImages.length > BATCH_SIZE) {
-      loadMoreBtn.hidden = false;
+      loadMoreBtn.style.display = "block";
+      // loadMoreBtn.hidden = false;
     }
   });
 
@@ -59,8 +60,8 @@ function loadNextBatch() {
 
   // अगर images खत्म हो गईं
   if (currentIndex >= allImages.length) {
-    // loadMoreBtn.style.display = "none";
-    loadMoreBtn.hidden = true;
+    loadMoreBtn.style.display = "none";
+    // loadMoreBtn.hidden = true;
   }
 }
 
