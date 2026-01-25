@@ -59,7 +59,8 @@ function loadNextBatch() {
 
   // अगर images खत्म हो गईं
   if (currentIndex >= allImages.length) {
-    loadMoreBtn.style.display = "none";
+    // loadMoreBtn.style.display = "none";
+    loadMoreBtn.hidden = true;
   }
 }
 
