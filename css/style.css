@@ -73,8 +73,13 @@ header{
   display: block;
   width: 100%;
   /* border-radius: 12px; */
+  opacity: 0;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: opacity 0.3s ease;
+  /* transition: transform 0.2s ease; */
+}
+.gallery-item img.loaded {
+  opacity: 1;
 }
 
 .gallery-item img:active {
@@ -191,7 +196,7 @@ header{
     text-align: center;
     margin: 0 10px 10px 10px;
     background-color: none;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 .load_more_box button{
     width: 100%;
@@ -199,7 +204,8 @@ header{
     font-size: 18px;
     font-weight: bold;
     background-color: transparent;
-    border: none;
+    border: 1px solid black;
+    /* border: none; */
     padding: 5px 0;
 }
 .load_more_box button:disabled {
