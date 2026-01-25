@@ -7,7 +7,7 @@ const popoverDownload = document.getElementById("popoverDownload");
 
 let allImages = [];
 let currentIndex = 0;
-const BATCH_SIZE = 12;
+const BATCH_SIZE = 3;
 
 fetch("data/images.json")
   .then(res => res.json())
@@ -15,9 +15,9 @@ fetch("data/images.json")
     allImages = images.reverse(); // latest first
     document.getElementById("count").innerText = `${allImages.length}`;
     loadNextBatch();
-    if (allImages.length > BATCH_SIZE) {
-      loadMoreBtn.hidden = false;
-    }
+    // if (allImages.length > BATCH_SIZE) {
+    //   loadMoreBtn.hidden = false;
+    // }
   });
 
 function loadNextBatch() {
