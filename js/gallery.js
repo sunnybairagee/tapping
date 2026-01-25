@@ -15,7 +15,7 @@ fetch("data/images.json")
     allImages = images.reverse(); // latest first
     document.getElementById("count").innerText = `${allImages.length}`;
     loadNextBatch();
-    if (allImages.length < BATCH_SIZE) {
+    if (allImages.length > BATCH_SIZE) {
       loadMoreBtn.hidden = false;
     }
   });
