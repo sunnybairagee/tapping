@@ -15,6 +15,9 @@ fetch("data/images.json")
     allImages = images.reverse(); // latest first
     document.getElementById("count").innerText = `${allImages.length}`;
     loadNextBatch();
+    if (allImages.length > BATCH_SIZE) {
+      loadMoreBtn.hidden = false;
+    }
   });
 
 function loadNextBatch() {
@@ -38,6 +41,7 @@ function loadNextBatch() {
     /* Jab image load ho jaaye */
     image.onload = () => {
       skeleton.remove();
+      image.classList.add("loaded");
     };
 
     image.onclick = () => {
