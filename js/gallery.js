@@ -7,7 +7,7 @@ const popoverDownload = document.getElementById("popoverDownload");
 
 let allImages = [];
 let currentIndex = 0;
-const BATCH_SIZE = 10;
+const BATCH_SIZE = 3;
 
 loadMoreBtn.hidden = true;
 
@@ -34,9 +34,19 @@ function loadNextBatch(isFirstBatch = false) {
     const div = document.createElement("div");
     div.className = "gallery-item";
 
+    /* Skeleton */
+    const skeleton = document.createElement("div");
+    skeleton.className = "skeleton";
+
     const image = document.createElement("img");
     image.src = `images/${img}`;
     image.loading = "lazy";
+
+        /* Jab image load ho jaaye */
+    // image.onload = () => {
+    //   skeleton.remove();
+    //   image.classList.add("loaded");
+    // };
 
     const onImageReady = () => {
       loadedCount++;
@@ -54,6 +64,10 @@ function loadNextBatch(isFirstBatch = false) {
       onImageReady();
     } else {
       image.onload = image.onerror = onImageReady;
+      image.onload = () => {
+        skeleton.remove();
+        image.classList.add("loaded");
+      };
     }
 
     image.onclick = () => {
