@@ -48,10 +48,10 @@ function loadNextBatch(isFirstBatch = false) {
     });
 
     /* Jab image load ho jaaye */
-    image.onload = () => {
-      skeleton.remove();
-      image.classList.add("loaded");
-    };
+    // image.onload = () => {
+    //   skeleton.remove();
+    //   image.classList.add("loaded");
+    // };
 
     loadPromises.push(imgPromise);
 
