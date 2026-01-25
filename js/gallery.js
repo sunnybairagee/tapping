@@ -7,24 +7,28 @@ const popoverDownload = document.getElementById("popoverDownload");
 
 let allImages = [];
 let currentIndex = 0;
-const BATCH_SIZE = 3;
+const BATCH_SIZE = 10;
 
+/* ---------- FETCH ---------- */
 fetch("data/images.json")
   .then(res => res.json())
   .then(images => {
     allImages = images.reverse(); // latest first
     document.getElementById("count").innerText = `${allImages.length}`;
-    loadNextBatch();
-    if (allImages.length > BATCH_SIZE) {
-      loadMoreBtn.hidden = false;
-    }
+
+    // 🔥 First batch load with WAIT
+    loadNextBatch(true);
   });
 
-function loadNextBatch() {
+/* ---------- LOAD BATCH ---------- */
+function loadNextBatch(isFirstBatch = false) {
   const nextImages = allImages.slice(
     currentIndex,
     currentIndex + BATCH_SIZE
   );
+
+  // 👉 promises array (image load tracking)
+  const loadPromises = [];
 
   nextImages.forEach(img => {
     const div = document.createElement("div");
@@ -38,16 +42,23 @@ function loadNextBatch() {
     image.src = `images/${img}`;
     image.loading = "lazy";
 
+    // 🔑 Promise for each image
+    const imgPromise = new Promise(resolve => {
+      image.onload = image.onerror = () => resolve();
+    });
+
     /* Jab image load ho jaaye */
     image.onload = () => {
       skeleton.remove();
       image.classList.add("loaded");
     };
 
+    loadPromises.push(imgPromise);
+
     image.onclick = () => {
       popoverImg.src = `images/${img}`;
       popoverDownload.href = `images/${img}`;
-      popover.showPopover(); // native popover
+      popover.showPopover();
     };
 
     div.appendChild(skeleton);
@@ -57,14 +68,108 @@ function loadNextBatch() {
 
   currentIndex += BATCH_SIZE;
 
-  // अगर images खत्म हो गईं
-  if (currentIndex >= allImages.length) {
-    // loadMoreBtn.style.display = "none";
-    loadMoreBtn.hidden = true;
-  }
+  // 🔥 WAIT until all images of this batch load
+  Promise.all(loadPromises).then(() => {
+    // 👉 First batch ke baad hi button show
+    if (isFirstBatch && allImages.length > BATCH_SIZE) {
+      loadMoreBtn.hidden = false;
+    }
+
+    // 👉 Last batch ke baad hide
+    if (currentIndex >= allImages.length) {
+      loadMoreBtn.hidden = true;
+    }
+  });
 }
 
-loadMoreBtn.addEventListener("click", loadNextBatch);
+/* ---------- LOAD MORE CLICK ---------- */
+loadMoreBtn.addEventListener("click", () => {
+  loadMoreBtn.hidden = true; // click ke baad temporarily hide
+  loadNextBatch();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const gallery = document.getElementById("gallery");
+// const loadMoreBtn = document.getElementById("loadMoreBtn");
+
+// const popover = document.getElementById("imgPopover");
+// const popoverImg = document.getElementById("popoverImg");
+// const popoverDownload = document.getElementById("popoverDownload");
+
+// let allImages = [];
+// let currentIndex = 0;
+// const BATCH_SIZE = 3;
+
+// fetch("data/images.json")
+//   .then(res => res.json())
+//   .then(images => {
+//     allImages = images.reverse(); // latest first
+//     document.getElementById("count").innerText = `${allImages.length}`;
+//     loadNextBatch();
+//     if (allImages.length > BATCH_SIZE) {
+//       loadMoreBtn.hidden = false;
+//     }
+//   });
+
+// function loadNextBatch() {
+//   const nextImages = allImages.slice(
+//     currentIndex,
+//     currentIndex + BATCH_SIZE
+//   );
+
+//   nextImages.forEach(img => {
+//     const div = document.createElement("div");
+//     div.className = "gallery-item";
+
+//     /* Skeleton */
+//     const skeleton = document.createElement("div");
+//     skeleton.className = "skeleton";
+
+//     const image = document.createElement("img");
+//     image.src = `images/${img}`;
+//     image.loading = "lazy";
+
+//     /* Jab image load ho jaaye */
+//     image.onload = () => {
+//       skeleton.remove();
+//       image.classList.add("loaded");
+//     };
+
+//     image.onclick = () => {
+//       popoverImg.src = `images/${img}`;
+//       popoverDownload.href = `images/${img}`;
+//       popover.showPopover(); // native popover
+//     };
+
+//     div.appendChild(skeleton);
+//     div.appendChild(image);
+//     gallery.appendChild(div);
+//   });
+
+//   currentIndex += BATCH_SIZE;
+
+//   // अगर images खत्म हो गईं
+//   if (currentIndex >= allImages.length) {
+//     // loadMoreBtn.style.display = "none";
+//     loadMoreBtn.hidden = true;
+//   }
+// }
+
+// loadMoreBtn.addEventListener("click", loadNextBatch);
 
 
 
