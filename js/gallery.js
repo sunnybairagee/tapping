@@ -1,5 +1,5 @@
 const gallery = document.getElementById("gallery");
-// const loadMoreBtn = document.getElementById("loadMoreBtn");
+const loadMoreBtn = document.getElementById("loadMoreBtn");
 
 const popover = document.getElementById("imgPopover");
 const popoverImg = document.getElementById("popoverImg");
@@ -12,7 +12,7 @@ const BATCH_SIZE = 6;
 fetch("data/images.json")
   .then(res => res.json())
   .then(images => {
-    images.reverse();
+    // images.reverse();
     // allImages = images.reverse();
     document.getElementById("count").innerText = `${images.length}`;
     loadNextBatch();
