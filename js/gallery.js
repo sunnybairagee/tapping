@@ -13,8 +13,8 @@ fetch("data/images.json")
   .then(res => res.json())
   .then(images => {
     // images.reverse();
-    // allImages = images.reverse();
-    document.getElementById("count").innerText = `${images.length}`;
+    allImages = images.reverse();
+    document.getElementById("count").innerText = `${allImages.length}`;
     loadNextBatch();
     if (allImages.length > BATCH_SIZE) {
       loadMoreBtn.style.display = "block";
