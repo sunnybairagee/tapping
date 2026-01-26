@@ -1,5 +1,5 @@
 const gallery = document.getElementById("gallery");
-const loadMoreBtn = document.getElementById("loadMoreBtn");
+// const loadMoreBtn = document.getElementById("loadMoreBtn");
 
 const popover = document.getElementById("imgPopover");
 const popoverImg = document.getElementById("popoverImg");
@@ -7,18 +7,19 @@ const popoverDownload = document.getElementById("popoverDownload");
 
 let allImages = [];
 let currentIndex = 0;
-const BATCH_SIZE = 3;
+const BATCH_SIZE = 6;
 
 fetch("data/images.json")
   .then(res => res.json())
   .then(images => {
-    allImages = images.reverse(); // latest first
-    document.getElementById("count").innerText = `${allImages.length}`;
+    images.reverse();
+    // allImages = images.reverse();
+    document.getElementById("count").innerText = `${images.length}`;
     loadNextBatch();
-    if (allImages.length > BATCH_SIZE) {
-      loadMoreBtn.style.display = "block";
-      // loadMoreBtn.hidden = false;
-    }
+    // if (allImages.length > BATCH_SIZE) {
+    //   loadMoreBtn.style.display = "block";
+    //   // loadMoreBtn.hidden = false;
+    // }
   });
 
 function loadNextBatch() {
