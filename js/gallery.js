@@ -16,10 +16,10 @@ fetch("data/images.json")
     // allImages = images.reverse();
     document.getElementById("count").innerText = `${images.length}`;
     loadNextBatch();
-    // if (allImages.length > BATCH_SIZE) {
-    //   loadMoreBtn.style.display = "block";
-    //   // loadMoreBtn.hidden = false;
-    // }
+    if (allImages.length > BATCH_SIZE) {
+      loadMoreBtn.style.display = "block";
+      // loadMoreBtn.hidden = false;
+    }
   });
 
 function loadNextBatch() {
